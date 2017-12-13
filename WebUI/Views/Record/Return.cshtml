@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Domain.Entities.Record>
+
+@{
+    ViewBag.Title = "Return";
+}
+
+<h2 class="text-center">Return Book</h2>
+
+<div class="text-center">
+    @using (Html.BeginForm("Return", "Record", FormMethod.Post))
+    {
+    <div class="container row">
+        <label>Look up by member ID</label>
+        @Html.TextBox("query", "", new { @Placeholder = "" }) &nbsp;
+        <input type="submit" value="Search" class="btn btn-info">
+    </div><br />
+        
+    }
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BorrowDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BorrowDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @if (item.Status == true)
+                {
+                    <label>Returned</label>
+                }
+                else
+                {
+                    <label>Not yet</label>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Return", "ReturnProcess", new { id = item.RecordID }, new { onclick = "return confirm('Are you sure?');" })
+            </td>
+        </tr>
+    }
+
+</table>

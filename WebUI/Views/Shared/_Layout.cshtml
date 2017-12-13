@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/jquery-1.10.2.min.js"/>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse bg-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <!--mobile-->
+                <nav class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </nav>
+                <nav class="collapse navbar-collapse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            @Html.ActionLink("Apfel's Library", "Index", "Home",
+new { area = "" }, new { @class = "navbar-brand" })
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a class="dropdown-toggle" data-toggle="dropdown">Manage</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Book", "List", "Book")</li>
+
+                                    <li>@Html.ActionLink("Member", "List", "Member")</li>
+
+                                    <li>@Html.ActionLink("Librarian", "List", "Librarian")</li>
+                                </ul>
+
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Borrow", "BorrowList", "Record")
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Return", "Return", "Record")
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Record", "List", "Record")
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Logout", "Login", "Account")
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div class="container-fluid">
+            <div class="row">
+                <footer>
+                    <div class="col-sm-6">
+                        
+                        <h4>Apfel's Library</h4><br />
+                        <p><b>A library management System</b></p><br />
+                        <p>Thpakorn Tuwwaemuesa 582115015</p>
+                        <p>Piyawasin Pikror-ngan 582115035</p>
+                        <p>Hathaichanok Dumrongsiri 582115045</p>
+                        <p>Nuntachat Pattanasart 582115031</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <br />
+                        <h4>Contact Us</h4><br />
+                        <p><i class="fa fa-phone">+44 12553 4567</i> </p><br />
+                        <p><i class="fa fa-email">support@apfel.io</i></p><br />
+                        <p><i class="fa fa-location">4 Privet Drive, Little Whinging</i></p>
+                        <p>Surrey, Engliad, Great Britain</p>
+                    </div>
+                </footer>
+            </div>
+
+            <hr />
+            <p>&copy; @DateTime.Now.Year - Copyright by CBSD 1/2017 Students</p>
+
+
+
+
+        </div>
+    </div>
+        
+
+    
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

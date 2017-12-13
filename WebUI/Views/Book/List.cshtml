@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Domain.Entities.Book>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<br /><h2 class="text-center">Book Management</h2>
+
+<p class="btn btn-default">
+    @Html.ActionLink("Add a book", "Add", "Book")
+</p><br/><br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher)
+        </td>
+        <td>
+            @if (item.Available == true)
+            {
+                <label>Yes</label>
+            }
+            else
+            {
+                <label>No</label>
+
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BookID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BookID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BookID }, new { onclick = "return confirm('Are you sure?');"})
+        </td>
+    </tr>
+}
+
+</table>

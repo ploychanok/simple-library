@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Domain.Entities.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br /><br />
+<h2 class="text-center">Welcome to Apfel's Library</h2>
+<div>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <div class="container row text-center">
+            @Html.TextBox("query", "", new { @Placeholder = "" }) &nbsp;
+            <input type="submit" value="Search" class="btn btn-info">
+        </div>
+
+        <br>
+        <div class="text-center">
+            @Html.RadioButton("criteria", "all", true)
+            <label>All</label>
+            @Html.RadioButton("criteria", "id")
+            <label>ID</label>
+            @Html.RadioButton("criteria", "title")
+            <label>Title</label>
+            @Html.RadioButton("criteria", "author")
+            <label>Author</label>
+            @Html.RadioButton("criteria", "publisher")
+            <label>Publisher</label>
+            @Html.RadioButton("criteria", "isbn")
+            <label>ISBN</label>
+        </div>
+
+    }
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pages)
+            </td>
+            <td>
+                @if (item.Available == true)
+                {
+                    <label>Yes</label>
+                }
+                else
+                {
+                    <label>No</label>
+
+                }
+            </td>
+        </tr>
+    }
+
+</table>

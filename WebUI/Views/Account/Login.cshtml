@@ -1,0 +1,31 @@
+﻿@model WebUI.Models.LoginViewModel
+@{ Layout = null;}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/jquery-1.10.2.min.js" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<div class="container text-center">
+    <h3>Apfel's Library</h3><label>please login</label><br />
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            <label>Username&nbsp;:&nbsp;</label>
+            @Html.TextBoxFor(m => m.Username)
+        </div>
+        <div class="form-group">
+            <label>Password&nbsp;:&nbsp;</label>
+            @Html.PasswordFor(m => m.Password)
+        </div>
+        <input type="submit" class="btn btn-primary" value="Login">
+    }
+</div>
+

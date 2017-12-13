@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Domain.Entities.Book>
+
+@{
+    ViewBag.Title = "BorrowList";
+}
+
+<br/><h2 class="text-center">Avaliable Books</h2>
+
+<div class="text-center">
+    @using (Html.BeginForm("BorrowList", "Record", FormMethod.Post))
+    {
+        <div class="container row">
+            @Html.TextBox("query", "", new { @Placeholder = "Search Avaliable Books" }) &nbsp;
+            <input type="submit" value="Search" class="btn btn-info">
+        </div><br />
+       
+        @Html.RadioButton("criteria", "all", true)
+        <label>All</label>
+        @Html.RadioButton("criteria", "id")
+        <label>ID</label>
+        @Html.RadioButton("criteria", "title")
+        <label>Title</label>
+        @Html.RadioButton("criteria", "author")
+        <label>Author</label>
+        @Html.RadioButton("criteria", "publisher")
+        <label>Publisher</label>
+        @Html.RadioButton("criteria", "isbn")
+        <label>ISBN</label>
+    }
+       
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pages)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pages)
+        </td>
+        <td>
+            @Html.ActionLink("Borrow", "Borrow", new { id=item.BookID }) 
+           
+        </td>
+    </tr>
+}
+
+</table>
